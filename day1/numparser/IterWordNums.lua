@@ -15,24 +15,6 @@ function IterWordNums:new(line, wordNumTrie)
     return ins
 end
 
--- ---@private
--- ---@param word string
--- ---@return number?
--- function IterWordNums:checkTrie(word)
---     local res = self.trie
---     for i = 1,#word do
---         local letter = word:sub(i, i)
---         res = res[letter]
---         if (res == nil) then
---             return
---         end
---         local numRes = tonumber(res)
---         if (numRes ~= nil) then
---             return numRes
---         end
---     end
--- end
-
 ---@private
 ---@param index number
 ---@return number?

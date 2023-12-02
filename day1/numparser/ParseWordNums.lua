@@ -15,33 +15,8 @@ function ParseWordNums:new(wordNumMap)
     return ins
 end
 
--- ---@param wordNumMap table<string, number>
--- ---@return table
--- function ParseWordNums:makeTrie(wordNumMap)
---     local trie = {}
---     for word, num in pairs(wordNumMap) do
---         self:insertWord(word, num, trie)
---     end
---     return trie
--- end
-
--- ---@param word string
--- ---@param number number
--- ---@param trie table
--- function ParseWordNums:insertWord(word, number, trie)  --luacheck: ignore
---     local res = trie
---     for i = 1, #word-1 do
---         local chr = word:sub(i, i)
---         if res[chr] == nil then
---             res[chr] = {}
---         end
---         res = res[chr]
---     end
---     res[word:sub(#word, #word)] = number
--- end
-
 ---@param line string
----@return Iterator # makes and returns an iteration of all the numbers in the line
+---@return Iterator
 function ParseWordNums:parse(line)  --luacheck: ignore
     return IterWordNums:new(line, self.wordNumTrie)
 end
