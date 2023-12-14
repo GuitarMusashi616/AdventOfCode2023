@@ -20,7 +20,7 @@ function SumLines:process(filename)
     local count = 0
     for line in h:lines() do
         local num = self.lineStrategy:process(line)
-        print(num)
+        -- print(num)
         count = count + num
     end
     h:close()

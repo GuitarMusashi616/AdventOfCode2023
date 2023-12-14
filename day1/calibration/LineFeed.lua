@@ -13,6 +13,19 @@ function LineFeed:new(parser)
 end
 
 ---@private
+---@param table table
+---@param line string
+function LineFeed:printNumbers(table, line)  --luacheck: ignore
+    local msg = ""
+    for i = 1, #table-1 do
+        msg = msg .. tostring(table[i])
+        msg = msg .. ", "
+    end
+    msg = msg .. table[#table]
+    print(line, " --------> ", msg)
+end
+
+---@private
 ---@param line string
 ---@return string[]
 function LineFeed:collectNumbers(line)
@@ -20,6 +33,7 @@ function LineFeed:collectNumbers(line)
     for number in self.parser:parse(line) do
         numbers[#numbers + 1] = number
     end
+    self:printNumbers(numbers, line)
     return numbers
 end
 
