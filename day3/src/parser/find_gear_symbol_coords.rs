@@ -1,23 +1,23 @@
-use crate::{engine::EngineSchematic, coord::Coord};
+use crate::{coord::Coord, engine::EngineSchematic};
 
-use super::IFindNumberCoords;
+use super::IFindSymbolCoords;
 
-pub struct FindNumberCoords;
+pub struct FindGearSymbolCoords;
 
-impl FindNumberCoords {
+impl FindGearSymbolCoords {
     pub fn new() -> Self {
-        FindNumberCoords {}
+        FindGearSymbolCoords{}
     }
 }
 
-impl IFindNumberCoords for FindNumberCoords {
+impl IFindSymbolCoords for FindGearSymbolCoords {
     fn find(&self, schem: &EngineSchematic) -> Vec<Coord> {
         let mut res = Vec::new();
-        for i in 1..schem.grid.len() {
+        for i in 0..schem.grid.len() {
             if let Some(row) = schem.grid.get(i) {
-                for j in 1..row.len() {
+                for j in 0..row.len() {
                     if let Some(col) = row.get(j) {
-                        if col.is_digit(10) {
+                        if *col == '*' {
                             res.push((i, j).into());
                         }
                     }

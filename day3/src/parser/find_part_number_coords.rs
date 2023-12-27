@@ -19,12 +19,12 @@ impl IFindPartNumberCoords for FindPartNumberCoords {
             if let Some(row) = schem.grid.get(i) {
                 for j in 0..row.len() {
                     if let Some(col) = row.get(j) {
-                        if col == &'.' {
+                        if col.is_digit(10) {
+                            row_progress.push((i, j).into());
+                        }
+                        else {
                             res.push(row_progress.clone());
                             row_progress.clear();
-                        }
-                        else if col.is_digit(10) {
-                            row_progress.push((i, j).into());
                         }
                     }
                 }
