@@ -1,5 +1,5 @@
-use crate::coord::Coord;
+use crate::{coord::Coord, engine::EngineSchematic};
 
 pub trait IFindNumberCoords {
-    fn find(&self) -> Box<dyn Iterator<Item = Coord>>;
+    fn find(&self, schem: &EngineSchematic) -> Vec<Coord>;
 }
